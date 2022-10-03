@@ -642,7 +642,7 @@ if($_POST['grupo']=='Profesor-DAW')
               en el aula ".$array[$diaguardado][$horaguardada]["taller"]."<br>";
             }
         }
-        dos("Monday",8,40);
+        dos($diaactual,$horaactual,$minutosactuales);
       }
       if($_POST['grupo']=='Profesor-DAM')
       { 
