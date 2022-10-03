@@ -123,7 +123,86 @@ if($_POST['grupo']=='DAW')
         $array["Viernes"][6]["profesor"] = "SERGIO RAMOS";
         $array["Viernes"][6]["taller"] = "201"."<br>";
 
-        
+        $horaactual=date("G");
+        $minutosactuales=date("i");
+        $diaactual=date("l");
+        function dos($dia,$hora,$minutos){
+          global $array;
+          global $diaactual;
+          global $minutosactuales;
+            switch ($diaactual) {
+              case "Monday":
+                  $diaEspanol  = "Lunes";
+                  break;
+              case "Tuesday":
+                  $diaEspanol  = "Martes";
+                  break;
+              case "Wednesday":
+                  $diaEspanol  = "Miércoles";
+                  break;
+              case "Thursday":
+                  $diaEspanol  = "Jueves";
+                  break;
+              case "Friday":
+                  $diaEspanol  = "Viernes";
+                  break;
+              case "Saturday":
+                  $diaEspanol  = "Sábado";
+                  break;
+              case "Sunday":
+                  $diaEspanol  = "Domingo";
+                  break;
+          }
+      
+          if ($hora == 8 and $minutosactuales>=0 and $minutos <=55){ 
+          $QUEHORA=1;
+          }
+          elseif($hora == 8 and $minutos > 55 or $hora == 9 and $minutos <= 50){
+            $QUEHORA=2;
+          }
+          elseif($hora == 9 and $minutos > 50 or $hora == 10 and $minutos <= 45){
+            $QUEHORA=3;
+          }
+          elseif($hora == 11 and $minutos > 15 or $hora == 12 and $minutos <= 10){
+            $QUEHORA=4;
+          }
+          elseif($hora == 12 and $minutos > 10 or $hora == 13 and $minutos <= 05){
+            $QUEHORA=5;
+          }
+          elseif($hora == 13 and $minutos > 05 or $hora == 13 and $minutos <= 50){
+            $QUEHORA=6;
+          }
+          elseif($hora == 10 and $minutos > 45 or $hora == 11 and $minutos <= 15){
+            $QUEHORA=7;
+          }
+          else{
+            $QUEHORA=8;
+          }
+      
+            foreach($array as $dia=>$valor){
+      
+              if ($diaEspanol == $dia){ 
+                
+                foreach($valor as $hora=>$valor2){
+                  if($hora==$QUEHORA){
+                    $horaguardada=$hora;
+                    $diaguardado=$dia;
+                  }
+                }
+              } 
+            }
+            if($QUEHORA==8){
+              echo "No estamos en clase<br>";
+            }
+            elseif($QUEHORA==7){
+              echo "Estamos en el recreo<br>";
+            }
+            else{ 
+              echo "Ahora toca ".$array[$diaguardado][$horaguardada]["modulo"]." con el profesor ".$array[$diaguardado][$horaguardada]["profesor"]."
+              en el aula ".$array[$diaguardado][$horaguardada]["taller"]."<br>";
+            }
+        }
+        dos($diaactual,$horaactual,$minutosactuales);
 
     foreach($array as $dia=>$valor)
     {
@@ -272,6 +351,86 @@ if($_POST['grupo']=='DAM')
   $array["Viernes"][6]["profesor"] = "SERGIA AMONSKY";
   $array["Viernes"][6]["taller"] = "101"."<br>";
 
+  $horaactual=date("G");
+        $minutosactuales=date("i");
+        $diaactual=date("l");
+        function dos($dia,$hora,$minutos){
+          global $array;
+          global $diaactual;
+          global $minutosactuales;
+            switch ($diaactual) {
+              case "Monday":
+                  $diaEspanol  = "Lunes";
+                  break;
+              case "Tuesday":
+                  $diaEspanol  = "Martes";
+                  break;
+              case "Wednesday":
+                  $diaEspanol  = "Miércoles";
+                  break;
+              case "Thursday":
+                  $diaEspanol  = "Jueves";
+                  break;
+              case "Friday":
+                  $diaEspanol  = "Viernes";
+                  break;
+              case "Saturday":
+                  $diaEspanol  = "Sábado";
+                  break;
+              case "Sunday":
+                  $diaEspanol  = "Domingo";
+                  break;
+          }
+      
+          if ($hora == 8 and $minutosactuales>=0 and $minutos <=55){ 
+          $QUEHORA=1;
+          }
+          elseif($hora == 8 and $minutos > 55 or $hora == 9 and $minutos <= 50){
+            $QUEHORA=2;
+          }
+          elseif($hora == 9 and $minutos > 50 or $hora == 10 and $minutos <= 45){
+            $QUEHORA=3;
+          }
+          elseif($hora == 11 and $minutos > 15 or $hora == 12 and $minutos <= 10){
+            $QUEHORA=4;
+          }
+          elseif($hora == 12 and $minutos > 10 or $hora == 13 and $minutos <= 05){
+            $QUEHORA=5;
+          }
+          elseif($hora == 13 and $minutos > 05 or $hora == 13 and $minutos <= 50){
+            $QUEHORA=6;
+          }
+          elseif($hora == 10 and $minutos > 45 or $hora == 11 and $minutos <= 15){
+            $QUEHORA=7;
+          }
+          else{
+            $QUEHORA=8;
+          }
+      
+            foreach($array as $dia=>$valor){
+      
+              if ($diaEspanol == $dia){ 
+                
+                foreach($valor as $hora=>$valor2){
+                  if($hora==$QUEHORA){
+                    $horaguardada=$hora;
+                    $diaguardado=$dia;
+                  }
+                }
+              } 
+            }
+            if($QUEHORA==8){
+              echo "No estamos en clase<br>";
+            }
+            elseif($QUEHORA==7){
+              echo "Estamos en el recreo<br>";
+            }
+            else{ 
+              echo "Ahora toca ".$array[$diaguardado][$horaguardada]["modulo"]." con el profesor ".$array[$diaguardado][$horaguardada]["profesor"]."
+              en el aula ".$array[$diaguardado][$horaguardada]["taller"]."<br>";
+            }
+        }
+        dos($diaactual,$horaactual,$minutosactuales);
   
     foreach($array as $dia=>$valor)
     {
@@ -416,6 +575,87 @@ if($_POST['grupo']=='ASIR')
   $array["Viernes"][6]["modulo"] = "HOF";
   $array["Viernes"][6]["profesor"] = "CARMELO ORTIZ";
   $array["Viernes"][6]["taller"] = "104"."<br>";
+
+  $horaactual=date("G");
+        $minutosactuales=date("i");
+        $diaactual=date("l");
+        function dos($dia,$hora,$minutos){
+          global $array;
+          global $diaactual;
+          global $minutosactuales;
+            switch ($diaactual) {
+              case "Monday":
+                  $diaEspanol  = "Lunes";
+                  break;
+              case "Tuesday":
+                  $diaEspanol  = "Martes";
+                  break;
+              case "Wednesday":
+                  $diaEspanol  = "Miércoles";
+                  break;
+              case "Thursday":
+                  $diaEspanol  = "Jueves";
+                  break;
+              case "Friday":
+                  $diaEspanol  = "Viernes";
+                  break;
+              case "Saturday":
+                  $diaEspanol  = "Sábado";
+                  break;
+              case "Sunday":
+                  $diaEspanol  = "Domingo";
+                  break;
+          }
+      
+          if ($hora == 8 and $minutosactuales>=0 and $minutos <=55){ 
+          $QUEHORA=1;
+          }
+          elseif($hora == 8 and $minutos > 55 or $hora == 9 and $minutos <= 50){
+            $QUEHORA=2;
+          }
+          elseif($hora == 9 and $minutos > 50 or $hora == 10 and $minutos <= 45){
+            $QUEHORA=3;
+          }
+          elseif($hora == 11 and $minutos > 15 or $hora == 12 and $minutos <= 10){
+            $QUEHORA=4;
+          }
+          elseif($hora == 12 and $minutos > 10 or $hora == 13 and $minutos <= 05){
+            $QUEHORA=5;
+          }
+          elseif($hora == 13 and $minutos > 05 or $hora == 13 and $minutos <= 50){
+            $QUEHORA=6;
+          }
+          elseif($hora == 10 and $minutos > 45 or $hora == 11 and $minutos <= 15){
+            $QUEHORA=7;
+          }
+          else{
+            $QUEHORA=8;
+          }
+      
+            foreach($array as $dia=>$valor){
+      
+              if ($diaEspanol == $dia){ 
+                
+                foreach($valor as $hora=>$valor2){
+                  if($hora==$QUEHORA){
+                    $horaguardada=$hora;
+                    $diaguardado=$dia;
+                  }
+                }
+              } 
+            }
+            if($QUEHORA==8){
+              echo "No estamos en clase<br>";
+            }
+            elseif($QUEHORA==7){
+              echo "Estamos en el recreo<br>";
+            }
+            else{ 
+              echo "Ahora toca ".$array[$diaguardado][$horaguardada]["modulo"]." con el profesor ".$array[$diaguardado][$horaguardada]["profesor"]."
+              en el aula ".$array[$diaguardado][$horaguardada]["taller"]."<br>";
+            }
+        }
+        dos($diaactual,$horaactual,$minutosactuales);
   
     foreach($array as $dia=>$valor)
     {
